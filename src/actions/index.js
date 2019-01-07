@@ -8,7 +8,12 @@ const receiveProducts = products => ({
 
 export const getAllProducts = () => dispatch => {
   shop.getProducts(products => {
-    dispatch(receiveProducts(products))
+    let flatObjs = products.map( el => {
+      el['title'] = el.productTitle;
+      el['price'] = el.price.value;
+      return el;
+    })
+    dispatch(receiveProducts(flatObjs))
   })
 }
 
