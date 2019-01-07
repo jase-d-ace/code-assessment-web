@@ -8,6 +8,10 @@ const receiveProducts = products => ({
 
 export const getAllProducts = () => dispatch => {
   shop.getProducts(products => {
+    /*
+     * helper function that modifies the incoming data from the product API. The hardcoded data was a little different, and the React components that are wired to this function are expecting a certain type of structure.
+     * This Array.map() method takes the data from the product API and modifies each object to match the PropTypes that the React components are expecting. Specifically, the data from the API has the "price" number nested in an object, which I had to extract and keep together with the rest of the information. I just threw away the "currency" string because as far as I could tell it wasn't being used in the front end.
+    */
     let flatObjs = products.map( el => {
       el['title'] = el.productTitle;
       el['price'] = el.price.value;

@@ -1,7 +1,7 @@
 /**
  * Mocking client-server processing
+ * import _products from './products.json'
  */
-// import _products from './products.json'
 
 /*
  * asynchronous function that hits the mock API endpoint for JSON data.
