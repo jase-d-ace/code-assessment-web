@@ -35,13 +35,14 @@ const quantityById = (state = initialState.quantityById, action) => {
         [productId]: (state[productId] || 0) + 1
       }
     case REMOVE_FROM_CART:
-      if (state[productId] > 0) {
+      if (state[action.productId] > 0) {
+        console.log('saw more than 1', state[action.productId])
         return {
           ...state,
-          [productId]: state[productId] - 1
+          [action.productId]: (state[action.productId] - 1)
         }
       } else {
-        const { productId, ...rest } = state;
+        const { _productId, ...rest } = state;
         return {
           ...rest
         }
