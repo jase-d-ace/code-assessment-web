@@ -11,10 +11,12 @@ export const getAllProducts = () => dispatch => {
     /*
      * helper function that modifies the incoming data from the product API. The hardcoded data was a little different, and the React components that are wired to this function are expecting a certain type of structure.
      * This Array.map() method takes the data from the product API and modifies each object to match the PropTypes that the React components are expecting. Specifically, the data from the API has the "price" number nested in an object, which I had to extract and keep together with the rest of the information. I just threw away the "currency" string because as far as I could tell it wasn't being used in the front end.
+     * One last change I made was to add a flag to differentiate between products that have already been added to the cart and products that haven't. This is to stop users from removing items from their cart that they haven't placed there.
     */
     let flatObjs = products.map( el => {
       el['title'] = el.productTitle;
       el['price'] = el.price.value;
+      el['inCart'] = false;
       return el;
     })
     dispatch(receiveProducts(flatObjs))
@@ -31,6 +33,10 @@ export const addToCart = productId => (dispatch, getState) => {
     dispatch(addToCartUnsafe(productId))
   }
 }
+
+/*
+ * Following the pattern from adding to your cart, the following two send redux the signal to remove an item from the cart
+*/
 
 const removeFromCartUnsafe = productId => ({
   type: types.REMOVE_FROM_CART,

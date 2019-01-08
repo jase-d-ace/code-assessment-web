@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
 
-const Cart  = ({ products, total, onCheckoutClicked, removeFromCart }) => {
+const Cart  = ({ products, inCart, total, onCheckoutClicked, removeFromCart }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map(product =>
@@ -11,6 +11,7 @@ const Cart  = ({ products, total, onCheckoutClicked, removeFromCart }) => {
         price={product.price}
         quantity={product.quantity}
         key={product.id}
+        inCart={product.inCart}
         removeFromCart={() => removeFromCart(product.id)}
       />
     )
