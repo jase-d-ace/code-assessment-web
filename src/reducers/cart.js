@@ -30,22 +30,13 @@ const addedIds = (state = initialState.addedIds, action) => {
 const quantityById = (state = initialState.quantityById, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      const { productId } = action
+      const { productId, ...rest } = action
       return { ...state,
         [productId]: (state[productId] || 0) + 1
       }
     case REMOVE_FROM_CART:
-      if (state[action.productId] > 0) {
-        console.log('saw more than 1', state[action.productId])
-        return {
-          ...state,
-          [action.productId]: (state[action.productId] - 1)
-        }
-      } else {
-        const { _productId, ...rest } = state;
-        return {
-          ...rest
-        }
+      return {
+        ...rest
       }
     default:
       return state
