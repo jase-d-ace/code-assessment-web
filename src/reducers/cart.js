@@ -24,27 +24,26 @@ const addedIds = (state = initialState.addedIds, action) => {
       }
       return [ ...state, action.productId ]
     case REMOVE_FROM_CART:
-      if (state.indexOf(action.productId) !== -1) {
-        //isolate productId from the array using spread
-        const [productId, ...rest] = state
-        //return only the rest of the array
-        return [...rest]
-      }
+      console.log('removing a thing', action.productId)
+      let filterArr = state.filter( id => id !== action.productId )
+      console.log('removed a thing. here is what is left', filterArr)
+      return [ ...filterArr ]
     default:
       return state
   }
 }
 
 const quantityById = (state = initialState.quantityById, action) => {
+  const { productId } = action
   switch (action.type) {
     case ADD_TO_CART:
-      const { productId, ...rest } = action
       return { ...state,
         [productId]: (state[productId] || 0) + 1
       }
     case REMOVE_FROM_CART:
+      delete state[productId]
       return {
-        ...rest
+        ...state
       }
     case ADD_QUANTITY:
       return {

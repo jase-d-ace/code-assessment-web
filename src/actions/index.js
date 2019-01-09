@@ -47,6 +47,29 @@ export const removeFromCart = productId => (dispatch, getState) => {
   dispatch(removeFromCartUnsafe(productId));
 }
 
+const changeQuantity = (productId, delta) => ({
+  type: delta,
+  productId
+})
+
+export const addQuantity = productId => (dispatch, getState) => {
+  //check to see if there item is still in stock
+  if (getState().products.byId[productId].inventory > getState().cart.quantityById[productId]) {
+    dispatch(changeQuantity(productId, types.ADD_QUANTITY))
+  } else {
+    //return statement stops a user from spamming the add function after the store has run out of stock
+    return
+  }
+}
+
+export const subtractQuantity = productId => (dispatch, getState) => {
+  if ((getState().cart.quantityById[productId] - 1) > 0) {
+    dispatch(changeQuantity(productId, types.SUBTRACT_QUANTITY))
+  } else {
+    dispatch(removeFromCartUnsafe(productId))
+  }
+}
+
 export const checkout = products => (dispatch, getState) => {
   const { cart } = getState()
 
