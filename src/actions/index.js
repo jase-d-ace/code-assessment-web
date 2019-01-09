@@ -49,12 +49,9 @@ export const removeFromCart = productId => (dispatch, getState) => {
 
 export const addQuantity = productId => (dispatch, getState) => {
   //check to see if there item is still in stock
-  if (getState().products.byId[productId].inventory >= getState().cart.quantityById[productId]) {
+  if (getState().products.byId[productId].inventory > 0) {
     //action will dispatch addToCart since adding a quantity is the same as clicking "add to cart" from the products list
     dispatch(addToCartUnsafe(productId))
-  } else {
-    //return statement stops a user from spamming the add function after the store has run out of stock
-    return;
   }
 }
 
