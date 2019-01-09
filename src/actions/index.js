@@ -47,22 +47,11 @@ export const removeFromCart = productId => (dispatch, getState) => {
   dispatch(removeFromCartUnsafe(productId));
 }
 
-/*
- * this is a helper function to DRY up our dispatchers a little a little bit.
- * Since the same logic will apply to updating quantities up or down, I decided to write a single function that takes two parameters.
- * The first parameter is the ID of the item that we're either adding one more of of subtracting.
- * The second parameter will tell the reducer which case to do.
-*/
-
-const changeQuantity = (productId, delta) => ({
-  type: delta,
-  productId
-});
-
 export const addQuantity = productId => (dispatch, getState) => {
   //check to see if there item is still in stock
-  if (getState().products.byId[productId].inventory > getState().cart.quantityById[productId]) {
-    dispatch(changeQuantity(productId, types.ADD_QUANTITY));
+  if (getState().products.byId[productId].inventory >= getState().cart.quantityById[productId]) {
+    //action will dispatch addToCart since adding a quantity is the same as clicking "add to cart" from the products list
+    dispatch(addToCartUnsafe(productId))
   } else {
     //return statement stops a user from spamming the add function after the store has run out of stock
     return;
@@ -74,9 +63,14 @@ export const addQuantity = productId => (dispatch, getState) => {
  * If our cart, after subtracting, will still have at least 1, then we dispatch "SUBTRACT_QUANTITY" as our action. If subtracting again will drop our quantity to 0, then we dispatch "REMOVE_FROM_CART" instead.
 */
 
+const subtractQuantityUnsafe = (productId) => ({
+  type: types.SUBTRACT_QUANTITY,
+  productId
+});
+
 export const subtractQuantity = productId => (dispatch, getState) => {
   if ((getState().cart.quantityById[productId] - 1) > 0) {
-    dispatch(changeQuantity(productId, types.SUBTRACT_QUANTITY));
+    dispatch(subtractQuantityUnsafe(productId));
   } else {
     dispatch(removeFromCartUnsafe(productId));
   };
