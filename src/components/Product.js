@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Product = ({ price, inventory, title, removeFromCart, inCart, addQuantity, subtractQuantity }) => {
-  const buttons = inCart ? (<div><button onClick={removeFromCart}>Remove?</button> <br /> <button onClick={addQuantity}>+</button> <button onClick={subtractQuantity}>-</button></div>) : ''
+const Product = ({ price, inventory, title, removeFromCart, inCart, addQuantity, subtractQuantity, quantity }) => {
+  const disabled = inventory >= quantity ? '' : 'disabled';
+  const buttons = inCart ? (<div><button onClick={removeFromCart}>Remove?</button> <br /> <button onClick={subtractQuantity}>-</button> <button onClick={addQuantity} disabled={disabled}>+</button></div>) : ''
   return (<div>
     {title} - &#36;{price}{inventory ? ` x ${inventory}` : null}
     {buttons}

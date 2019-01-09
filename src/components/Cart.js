@@ -9,6 +9,7 @@ const Cart = ({ products, inCart, total, onCheckoutClicked, removeFromCart, addQ
       <Product
         title={product.title}
         price={product.price}
+        inventory={product.inventory}
         quantity={product.quantity}
         key={product.id}
         inCart={product.inCart}
