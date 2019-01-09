@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Product = ({ price, inventory, title, removeFromCart, inCart }) => (
-  <div>
+const Product = ({ price, inventory, title, removeFromCart, inCart, addQuantity, subtractQuantity }) => {
+  const buttons = inCart ? (<div><button onClick={removeFromCart}>Remove?</button> <br /> <button onClick={addQuantity}>+</button> <button onClick={subtractQuantity}>-</button></div>) : ''
+  return (<div>
     {title} - &#36;{price}{inventory ? ` x ${inventory}` : null}
-    {inCart ? (<button onClick={removeFromCart}>Remove?</button>) : ''}
-  </div>
-)
+    {buttons}
+  </div>)
+}
 
 Product.propTypes = {
   price: PropTypes.number,
