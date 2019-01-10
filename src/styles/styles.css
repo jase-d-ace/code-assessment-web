@@ -1,4 +1,35 @@
-.header {
+* {
   font-family: "Arial";
-  font-size: 30px;
 }
+body {
+  background-color: #E0E0DD;
+}
+.header {
+  font-size: 30px;
+  display: inline;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.icon {
+  vertical-align: middle;
+  margin-bottom: 0.75em;
+}
+
+.link {
+  padding-left: 5px;
+}
+
+.cart-toggle {
+  text-decoration: none;
+  padding: 20px 20px;
+}
+
+.cart-toggle:hover {
+  color: #407FC0
+}
+

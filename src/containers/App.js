@@ -3,12 +3,15 @@ import { switchRender } from '../actions';
 import { connect } from 'react-redux'
 import ProductsContainer from './ProductsContainer'
 import CartContainer from './CartContainer'
+import shoppingCart from '../images/shopping-cart.png'
 import '../styles/styles.css'
 
 const App = ({switchRender, showCart}) => (
   <div>
-    <h2 className="header">Acme Store</h2>
-    <button onClick={switchRender}>switch?</button>
+    <div className="header-container">
+      <h2 className="header">Acme Store</h2>
+      <a className="cart-toggle" href="#" onClick={switchRender}><img className="icon" src={shoppingCart} alt="shopping cart" /><span className="link">{showCart ? "Back to Products" : "See your Cart"}</span></a>
+    </div>  
     <hr/>
     {showCart ? <CartContainer /> : <ProductsContainer />}
   </div>
