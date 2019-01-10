@@ -73,6 +73,18 @@ export const subtractQuantity = productId => (dispatch, getState) => {
   };
 };
 
+/*
+ * action that serves as a "switch" between cart and products
+*/
+
+const swap = () => ({
+  type: types.SWITCH_CART
+})
+
+export const switchRender = () => (dispatch, getState) => {
+  dispatch(swap())
+}
+
 export const checkout = products => (dispatch, getState) => {
   const { cart } = getState()
 
