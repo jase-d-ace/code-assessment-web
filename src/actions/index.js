@@ -38,13 +38,15 @@ export const addToCart = productId => (dispatch, getState) => {
  * Following the pattern from adding to your cart, the following two send redux the signal to remove an item from the cart
 */
 
-const removeFromCartUnsafe = productId => ({
+const removeFromCartUnsafe = (productId, quantity) => ({
   type: types.REMOVE_FROM_CART,
-  productId
+  productId,
+  quantity
 });
 
 export const removeFromCart = productId => (dispatch, getState) => {
-  dispatch(removeFromCartUnsafe(productId));
+  const quantityRemoved = getState().cart.quantityById[productId]
+  dispatch(removeFromCartUnsafe(productId, quantityRemoved));
 }
 
 export const addQuantity = productId => (dispatch, getState) => {
@@ -69,7 +71,7 @@ export const subtractQuantity = productId => (dispatch, getState) => {
   if ((getState().cart.quantityById[productId] - 1) > 0) {
     dispatch(subtractQuantityUnsafe(productId));
   } else {
-    dispatch(removeFromCartUnsafe(productId));
+    dispatch(removeFromCartUnsafe(productId, 1));
   };
 };
 
