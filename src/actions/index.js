@@ -36,6 +36,7 @@ export const addToCart = productId => (dispatch, getState) => {
 
 /*
  * Following the pattern from adding to your cart, the following two send redux the signal to remove an item from the cart
+ * A difference here though is that since we want to "restock" our inventory with whatever is removed from our cart, we need to pass this action another value, which is however many of the item is currently in the cart.
 */
 
 const removeFromCartUnsafe = (productId, quantity) => ({
@@ -45,7 +46,9 @@ const removeFromCartUnsafe = (productId, quantity) => ({
 });
 
 export const removeFromCart = productId => (dispatch, getState) => {
+  //access state to see how many of an item is currently in the cart
   const quantityRemoved = getState().cart.quantityById[productId]
+  //dispatch the action with the product in question, as well as how many there are of it.
   dispatch(removeFromCartUnsafe(productId, quantityRemoved));
 }
 
@@ -60,6 +63,7 @@ export const addQuantity = productId => (dispatch, getState) => {
 /*
  * This dispatcher has to first check if our cart will still have at least one of the item we're subtracting.
  * If our cart, after subtracting, will still have at least 1, then we dispatch "SUBTRACT_QUANTITY" as our action. If subtracting again will drop our quantity to 0, then we dispatch "REMOVE_FROM_CART" instead.
+ * If a user elects to "subtract" their way down to 0, our removeFromCartUnsafe action is dispatched with 1 as the second argument, since presumably, there was only 1 of that item left in the cart anyway
 */
 
 const subtractQuantityUnsafe = (productId) => ({
