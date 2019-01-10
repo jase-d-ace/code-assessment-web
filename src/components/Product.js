@@ -5,7 +5,7 @@ const Product = ({ price, inventory, title, removeFromCart, inCart, addQuantity,
   const disabled = inventory === 0 ? 'disabled' : '';
   const buttons = inCart ? (<div><button onClick={removeFromCart}>Remove?</button> <br /> <button onClick={subtractQuantity}>-</button> <button onClick={addQuantity} disabled={disabled}>+</button></div>) : ''
   return (<div>
-    {title} - &#36;{price}{(inventory && !inCart) ? ` x ${inventory}` : null}
+    {title} - &#36;{price}{(inventory && !inCart) ? ` x ${inventory}` : null} {inCart ? ` x${quantity}` : null}
     {buttons}
   </div>)
 }
