@@ -6,6 +6,7 @@ import {
   ADD_QUANTITY,
   SUBTRACT_QUANTITY
 } from '../constants/ActionTypes'
+import _ from 'underscore';
 
 const initialState = {
   addedIds: [],
@@ -42,8 +43,8 @@ const quantityById = (state = initialState.quantityById, action) => {
         [productId]: (state[productId] || 0) + 1
       }
     case REMOVE_FROM_CART:
-      //I feel like there is a more elegant way/better practice of doing this...
-      delete state[productId]
+      //external object manipulation library to avoid mutating state directly
+      _.omit(state, productId)
       return {
         ...state
       }
