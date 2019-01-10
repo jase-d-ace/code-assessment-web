@@ -50,6 +50,7 @@ export const removeFromCart = productId => (dispatch, getState) => {
   const quantityRemoved = getState().cart.quantityById[productId]
   //dispatch the action with the product in question, as well as how many there are of it.
   dispatch(removeFromCartUnsafe(productId, quantityRemoved));
+  dispatch(swap());
 }
 
 export const addQuantity = productId => (dispatch, getState) => {
