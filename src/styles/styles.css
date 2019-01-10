@@ -79,6 +79,14 @@ body {
   color: #EDEDED;
 }
 
+.add-to-cart:hover {
+  background-color: #407FC0;
+}
+
+.add-to-cart:disabled {
+  background-color: #5E97D166;
+}
+
 .remaining {
   color: #ADADAD;
 }
