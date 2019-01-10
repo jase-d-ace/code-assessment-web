@@ -12,7 +12,7 @@ const Product = ({ price, inventory, title, removeFromCart, inCart, addQuantity,
   return (
     <div className="product-container" >
         <img src="https://lorempixel.com/400/400" alt="product" className="product-img" />
-                      <div className="product-info"><div className="product-banner"><span className="product-title">{title}</span> <span> &#36;{price}</span></div>{(inventory && !inCart) ? (<p>{inventory} remaining </p>): null} {inCart ? (<p> x{quantity}</p>) : null}
+                      <div className="product-info"><div className="product-banner"><span className="product-title">{title}</span> <span> &#36;{price}</span></div>{(inventory && !inCart) ? (<p className="remaining">{inventory} REMAINING </p>): null} {inCart ? (<p> x{quantity}</p>) : null}
     {buttons}
           </div>
   </div>)
