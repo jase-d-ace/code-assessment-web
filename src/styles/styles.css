@@ -15,7 +15,8 @@ body {
 }
 
 .header-container {
-  display: flex;
+  display: -moz-box;
+  display:flex;
   justify-content: space-between;
 }
 
@@ -40,14 +41,17 @@ body {
 /* Product Styles */
 
 .product-container {
-  display: flex;
+  display: -moz-box;
+  display:flex;
   flex-direction: row;
   justify-content: space-between;
   background-color: #EDEDED;
   border-radius: 5px;
+  margin-top: 3%;
 }
 
 .product-info {
+  display: -moz-box;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -62,6 +66,7 @@ body {
 }
 
 .product-banner {
+  display: -moz-box;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -99,6 +104,7 @@ body {
 /* Cart Styles */
 
 .empty-cart {
+  display: -moz-box;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,7 +122,13 @@ body {
   height: 100%;
 }
 
+.cart-holder {
+  height: 100%;
+  padding: 10px 10px;
+}
+
 .cart-button-container {
+  display: -moz-box;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -125,17 +137,29 @@ body {
 }
 
 .quantity-container {
-  display:flex;
+  display: -moz-box;
+  display: flex;
   justify-content: space-around;
   width: 100%;
 }
 
 .quantity-button {
-  background-color: #5E97D1;
+  background-color: #F5F5F5;
   height: 41px;
   width: 139px;
-  color: #EDEDED;
+  color: #878787;
   border: none;
+  font-size: 21px;
+}
+
+.quantity-button:hover {
+  background-color: #5E97D1;
+  color: #D8D8D8;
+}
+
+.quantity-button:disabled {
+  background-color: #F9F9F9;
+  color: #D8D8D8;
 }
 
 .subtract-quantity {
@@ -149,6 +173,23 @@ body {
 .remove-button {
   text-decoration: none;
   color: #CC1D39;
+  font-size: 21px;
+}
+
+.quantity {
+  padding-top: 10px;
+  font-size: 21px;
+  margin: 0;
+}
+
+.checkout {
+  background-color: #EDEDED;
+  width: 100%;
+  display: -moz-box;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2%;
 }
 
 .total {
@@ -157,16 +198,82 @@ body {
 
 /* Responsive Design Styles */
 
+/* Mobile Phones */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px){
   /* Responsive Header Styles */
   .header-container {
+    display: -moz-box;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
   /* Responsive Product Styles */
+  .product-container {
+    display: -moz-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 5%;
+  }
+
+  .product-info {
+    display: -moz-box;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin: 1% 0 1% 0;
+  }
+
+  .product-title {
+    font-size: 21px;
+  }
+
+  .product-img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+  }
+
+  /* Responsive Cart Styles */
+  .checkout-button-mobile {
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+  }
 }
 
+/* iPad and Tablet Styles */
 
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
 
+  button {
+    font-size: 14px;
+  }
+  .product-title {
+    font-size: 30px;
+  }
+
+  .product-price {
+    font-size: 30px;
+  }
+  .product-info {
+    display: -moz-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px;
+    margin: 1% 0 1% 0;
+  }
+
+  .product-banner {
+    margin-top: 20%;
+    width: 100%;
+  }
+  
+  .quantity {
+    margin: 0 auto;
+    font-size: 30px;
+  }
+}

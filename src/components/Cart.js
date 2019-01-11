@@ -29,7 +29,7 @@ const Cart = ({ products, inCart, total, onCheckoutClicked, removeFromCart, addQ
 
 
   return (
-    <div>
+    <div className="cart-holder">
       <h1>Your Cart</h1>
       <div className="cart-container">{nodes}</div>
         {hasProducts ? (<CheckOutButton total={total} onCheckoutClicked={onCheckoutClicked} />) : ''}

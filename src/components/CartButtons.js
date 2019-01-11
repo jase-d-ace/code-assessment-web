@@ -9,7 +9,7 @@ const CartButtons = ({ removeFromCart, subtractQuantity, addQuantity, quantity, 
       <br />
       <div className="quantity-container"> 
         <button onClick={subtractQuantity} className="subtract-quantity quantity-button">-</button>
-        <p> x{quantity}</p>
+        <span className="quantity"> x{quantity}</span>
         <button onClick={addQuantity} disabled={disabled} className="add-quantity quantity-button">+</button>
       </div>
     </div>
