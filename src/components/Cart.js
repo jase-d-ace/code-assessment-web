@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
+import shoppingCartLarge from '../images/shopping-cart-large.png';
+import CheckOutButton from './CheckOutButton';
 
 const Cart = ({ products, inCart, total, onCheckoutClicked, removeFromCart, addQuantity, subtractQuantity }) => {
   const hasProducts = products.length > 0
@@ -19,18 +21,18 @@ const Cart = ({ products, inCart, total, onCheckoutClicked, removeFromCart, addQ
       />
     )
   ) : (
-    <em>Please add some products to cart.</em>
+    <div className="empty-cart">
+      <img src={shoppingCartLarge} className="cart-img" alt="cart" />
+      <em className="empty-text">Please add some products your to cart.</em>
+    </div>
   )
 
+
   return (
-    <div>
-      <h3>Your Cart</h3>
-      <div>{nodes}</div>
-      <p>Total: &#36;{total}</p>
-      <button onClick={onCheckoutClicked}
-        disabled={hasProducts ? '' : 'disabled'}>
-        Checkout
-      </button>
+    <div className="cart-holder">
+      <h1>Your Cart</h1>
+      <div className="cart-container">{nodes}</div>
+        {hasProducts ? (<CheckOutButton total={total} onCheckoutClicked={onCheckoutClicked} />) : ''}
     </div>
   )
 }

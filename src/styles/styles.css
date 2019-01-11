@@ -1,23 +1,28 @@
+/* Global Style */
 * {
   font-family: "Arial";
 }
+
 body {
   background-color: #E0E0DD;
+  margin: 2%;
 }
+
+/* Top Banner Styles */
 .header {
   font-size: 30px;
   display: inline;
 }
 
 .header-container {
-  display: flex;
+  display: -moz-box;
+  display:flex;
   justify-content: space-between;
 }
 
 
 .icon {
   vertical-align: middle;
-  margin-bottom: 0.75em;
 }
 
 .link {
@@ -33,3 +38,242 @@ body {
   color: #407FC0
 }
 
+/* Product Styles */
+
+.product-container {
+  display: -moz-box;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #EDEDED;
+  border-radius: 5px;
+  margin-top: 3%;
+}
+
+.product-info {
+  display: -moz-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  margin: 5%;
+}
+
+.product-img {
+  height: 100%;
+  border-radius: 5px 0 0 5px;
+}
+
+.product-banner {
+  display: -moz-box;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.product-title {
+  font-size: 38px;
+}
+
+.product-price {
+  font-size: 21px;
+}
+
+.add-to-cart {
+  background-color: #5E97D1;
+  height: 41px;
+  width: 139px;
+  border-radius: 50px;
+  color: #EDEDED;
+  border: none;
+}
+
+.add-to-cart:hover {
+  background-color: #407FC0;
+}
+
+.add-to-cart:disabled {
+  background-color: #5E97D166;
+}
+
+.remaining {
+  color: #ADADAD;
+}
+
+/* Cart Styles */
+
+.empty-cart {
+  display: -moz-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 50vh;
+  width: 100vw;
+}
+
+
+.empty-text {
+  color: #919191;
+  font-size: 21px;
+}
+
+.cart-container {
+  height: 100%;
+}
+
+.cart-holder {
+  height: 100%;
+  padding: 10px 10px;
+}
+
+.cart-button-container {
+  display: -moz-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 50%;
+  width: 100%;
+}
+
+.quantity-container {
+  display: -moz-box;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.quantity-button {
+  background-color: #F5F5F5;
+  height: 41px;
+  width: 139px;
+  color: #878787;
+  border: none;
+  font-size: 21px;
+}
+
+.quantity-button:hover {
+  background-color: #5E97D1;
+  color: #D8D8D8;
+}
+
+.quantity-button:disabled {
+  background-color: #F9F9F9;
+  color: #D8D8D8;
+}
+
+.subtract-quantity {
+  border-radius: 50px 0 0 50px;
+}
+
+.add-quantity {
+  border-radius: 0 50px 50px 0;
+}
+
+.remove-button {
+  text-decoration: none;
+  color: #CC1D39;
+  font-size: 21px;
+}
+
+.quantity {
+  padding-top: 10px;
+  font-size: 21px;
+  margin: 0;
+}
+
+.checkout {
+  background-color: #EDEDED;
+  width: 100%;
+  display: -moz-box;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2%;
+}
+
+.total {
+  font-size: 20px;
+}
+
+/* Responsive Design Styles */
+
+/* Mobile Phones */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px){
+  /* Responsive Header Styles */
+  .header-container {
+    display: -moz-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Responsive Product Styles */
+  .product-container {
+    display: -moz-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 5%;
+  }
+
+  .product-info {
+    display: -moz-box;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin: 1% 0 1% 0;
+  }
+
+  .product-title {
+    font-size: 21px;
+  }
+
+  .product-img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+  }
+
+  /* Responsive Cart Styles */
+  .checkout-button-mobile {
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+  }
+}
+
+/* iPad and Tablet Styles */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+
+  button {
+    font-size: 14px;
+  }
+  .product-title {
+    font-size: 30px;
+  }
+
+  .product-price {
+    font-size: 30px;
+  }
+  .product-info {
+    display: -moz-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px;
+    margin: 1% 0 1% 0;
+  }
+
+  .product-banner {
+    margin-top: 20%;
+    width: 100%;
+  }
+  
+  .quantity {
+    margin: 0 auto;
+    font-size: 30px;
+  }
+}

@@ -9,8 +9,12 @@ import '../styles/styles.css'
 const App = ({switchRender, showCart}) => (
   <div>
     <div className="header-container">
-      <h2 className="header">Acme Store</h2>
-      <a className="cart-toggle" href="#" onClick={switchRender}><img className="icon" src={shoppingCart} alt="shopping cart" /><span className="link">{showCart ? "Back to Products" : "See your Cart"}</span></a>
+      <h2 className="header">Chez Andrada</h2>
+      <a className="cart-toggle" onClick={switchRender}>
+        <img className="icon" src={shoppingCart} alt="shopping cart" />
+        <span className="link">{showCart ? "Back to Products" : "See your Cart"}
+        </span>
+      </a>
     </div>  
     <hr/>
     {showCart ? <CartContainer /> : <ProductsContainer />}

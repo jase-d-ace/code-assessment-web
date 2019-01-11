@@ -1,12 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import CartButtons from './CartButtons';
+import AddToCartButton from './AddToCartButton';
 
-const Product = ({ price, inventory, title, removeFromCart, inCart, addQuantity, subtractQuantity, quantity }) => {
-  const disabled = inventory === 0 ? 'disabled' : '';
-  const buttons = inCart ? (<div><button onClick={removeFromCart}>Remove?</button> <br /> <button onClick={subtractQuantity}>-</button> <button onClick={addQuantity} disabled={disabled}>+</button></div>) : ''
-  return (<div>
-    {title} - &#36;{price}{(inventory && !inCart) ? ` x ${inventory}` : null} {inCart ? ` x${quantity}` : null}
-    {buttons}
+const Product = ({ price, inventory, title, removeFromCart, inCart, addQuantity, subtractQuantity, quantity, onAddToCartClicked }) => {
+  const buttons = inCart ? (
+    <CartButtons 
+      removeFromCart={removeFromCart} 
+      addQuantity={addQuantity}
+      subtractQuantity={subtractQuantity}
+      quantity={quantity}
+      inventory={inventory} 
+    />) : (
+      <AddToCartButton
+        onAddToCartClicked={onAddToCartClicked}
+        inventory={inventory}
+      />)
+  return (
+    <div className="product-container" >
+      <img src="https://lorempixel.com/400/400" alt="product" className="product-img" />
+      <div className="product-info">
+        <div className="product-banner">
+          <span className="product-title">{title}</span>
+          <span className="product-price"> &#36;{price}</span>
+        </div>
+        {(inventory && !inCart) ? (<p className="remaining">{inventory} REMAINING </p>): null }
+        {buttons}
+    </div>
   </div>)
 }
 
