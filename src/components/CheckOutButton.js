@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 const CheckOutButton = ({ onCheckoutClicked, total }) => (
   <div className="checkout">
-    <p>Total: &#36;{total}</p>
-    <button onClick={onCheckoutClicked}>
-        Checkout
+    <p className='total'>Total: &#36;{total}</p>
+    <button className="add-to-cart" onClick={onCheckoutClicked}>
+        CHECKOUT
     </button>
   </div>
 );
