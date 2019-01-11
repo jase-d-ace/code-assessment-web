@@ -44,9 +44,9 @@ const quantityById = (state = initialState.quantityById, action) => {
       }
     case REMOVE_FROM_CART:
       //external object manipulation library to avoid mutating state directly
-      _.omit(state, productId)
+      let newState = _.omit(state, productId)
       return {
-        ...state
+        ...newState
       }
     case ADD_QUANTITY:
       return {
